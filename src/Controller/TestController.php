@@ -23,12 +23,7 @@ class TestController extends AbstractController
         return new Response("Hello World ! ".$myName);
     }
 
-    #[Route('/calc/add/{x}/{y}', name: 'urlCalcAdd')]
-    public function calcAdd($x,$y): Response
-    {   
-        $res = $x + $y;
-        return new Response("Calcule -ADD- ! ".$res);
-    }
+    
     #[Route('/calc/mul/{x}/{y}', name: 'urlCalcMul')]
     public function calcMul($x,$y): Response
     {   
@@ -45,5 +40,7 @@ class TestController extends AbstractController
         return new Response("Calcule -MUL> ! ".$res);
     }
 
+
+    //
    
 }

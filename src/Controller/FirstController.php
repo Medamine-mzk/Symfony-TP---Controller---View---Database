@@ -13,4 +13,15 @@ class FirstController extends AbstractController
     {
         return $this->render('first/index.html.twig');
     }
+
+    #[Route('/calc/add/{x}/{y}', name: 'urlCalcAdd')]
+    public function calcAdd($x,$y): Response
+    {   
+        $res = $x + $y;
+        return $this->render('calcView/calc.html.twig', [
+            'x' => $x,
+            'y' => $y,
+            'res' => $res
+        ]);
+    }
 }
