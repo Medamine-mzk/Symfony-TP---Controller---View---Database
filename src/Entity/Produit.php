@@ -32,6 +32,9 @@ class Produit
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\ManyToOne(inversedBy: 'listProduits')]
+    private ?Categorie $categorie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,5 +110,20 @@ class Produit
         $this->price = $price;
 
         return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+    public function __toString(){
+        return $this->getLabel();//.'  '.$this->getId();
     }
 }
