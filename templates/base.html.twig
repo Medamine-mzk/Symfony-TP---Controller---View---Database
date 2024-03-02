@@ -28,7 +28,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-
+                {% if is_granted('ROLE_USER') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('app_first')}}">First Page</a>
                 </li>
@@ -38,13 +38,31 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('urlCalcAdd',{'x':'10','y':'20'})}}">calc 10 + 20</a>
                 </li>
+                {% endif %}
+                {% if  is_granted('ROLE_ADMIN') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('app_produit_index')}}">Gestion des produits</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('app_categorie_index')}}">Gestion des Categories</a>
                 </li>
+                {% endif %}
             </ul>
+            
+            </div>
+            <div class="text-end">
+                    {% if app.user %}
+                        <a href="{{path('app_logout')}}">
+                            <button type="button" class="btn btn-danger">Logout</button>
+                        </a>
+                    {% else %}
+                        <a href="{{path('app_login')}}">
+                            <button type="button" class="btn btn-outline-light me-2">Login</button>
+                        <a>
+                        <a href="{{path('app_register')}}">
+                            <button type="button" class="btn btn-warning">Register</button>
+                        <a>
+                    {% endif %}
             </div>
         </div>
     </nav>
